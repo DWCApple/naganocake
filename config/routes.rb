@@ -1,11 +1,4 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'orders/about'
-    get 'orders/compleate'
-    get 'orders/index'
-    get 'orders/new'
-    get 'orders/show'
-  end
   #管理者用
   #URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
@@ -18,5 +11,14 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: "public/sessions"
   }
+  
+    namespace :public do
+    get 'orders/about'
+    get 'orders/compleate'
+    get 'orders/index'
+    get 'orders/new'
+    get 'orders/show'
+  end
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

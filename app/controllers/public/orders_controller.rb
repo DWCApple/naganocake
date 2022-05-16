@@ -1,5 +1,9 @@
 class Public::OrdersController < ApplicationController
   def about
+    @order = Order.new
+    @end_user = currrent_customer
+    @currrent_addresses = End_user.select(:postal_code, :adress, :name)
+    @adresses = Address.new
   end
 
   def compleate
@@ -13,4 +17,6 @@ class Public::OrdersController < ApplicationController
 
   def show
   end
+  
+  
 end
