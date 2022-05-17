@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :genres, only:[:index,:edit,:create,:update]
+  end
   #管理者用
   namespace :admin do
     root to: 'homes#top'
