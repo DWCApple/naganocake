@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'cart_items/index'
+    get 'cart_items/create'
+    get 'cart_items/update'
+    get 'cart_items/destroy'
+    get 'cart_items/destroy_all'
+  end
   #管理者用
   #URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
