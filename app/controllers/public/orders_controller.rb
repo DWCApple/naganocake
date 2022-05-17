@@ -2,7 +2,7 @@ class Public::OrdersController < ApplicationController
   def about
     @order = Order.new
     @end_user = currrent_customer
-    @currrent_addresses = End_user.select(:postal_code, :adress, :name)
+    @currrent_addresses = End_use.select(:postal_code, :adress, :name)
     @adresses = Address.new
   end
 
