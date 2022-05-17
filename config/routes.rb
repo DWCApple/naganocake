@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :genres, only:[:index,:edit,:create,:update]
+  end
   #管理者用
   #URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
