@@ -10,10 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2022_05_16_064814) do
-
-
+ActiveRecord::Schema.define(version: 2022_05_17_072859) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -50,6 +47,9 @@ ActiveRecord::Schema.define(version: 2022_05_16_064814) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "orders", force: :cascade do |t|
     t.integer "end_user_id"
@@ -60,7 +60,15 @@ ActiveRecord::Schema.define(version: 2022_05_16_064814) do
     t.string "postal_code"
     t.integer "method_of_payment", default: 0, null: false
     t.integer "status", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
+  create_table "shipping_addresses", force: :cascade do |t|
+    t.integer "end_users_id"
+    t.string "name"
+    t.string "address"
+    t.string "postal_code"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
