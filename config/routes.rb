@@ -2,8 +2,9 @@ Rails.application.routes.draw do
   #管理者用
   namespace :admin do
     root to: 'homes#top'
+    resources :orders, only: [:show]
   end
-  
+
   #URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
@@ -15,7 +16,7 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: "public/sessions"
   }
-  
+
     namespace :public do
     get 'orders/about'
     get 'orders/compleate'
@@ -23,6 +24,6 @@ Rails.application.routes.draw do
     get 'orders/new'
     get 'orders/show'
   end
-  
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
