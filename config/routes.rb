@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     sessions: "public/sessions"
   }
 
-  namespace :public do
+  scope module: :public do
     resources :cart_items, only: [:index, :create, :update, :destroy]
     get 'orders/about'
     get 'orders/compleate'

@@ -1,9 +1,11 @@
 class Public::CartItemsController < ApplicationController
-  before_action:authenticate_end_user!
   def index
+    @cart_items = current_end_user.cart_items.all
   end
 
   def create
+    @cart_item = CartItem.new(cart_item_params)
+    @cart_item.end_user_id = current_end_user.id
   end
 
   def update
