@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   }
 
   scope module: :public do
+    delete '/cart_items/destroy_all' => "cart_items#destroy_all"
     resources :cart_items, only: [:index, :create, :update, :destroy]
     get 'orders/about'
     get 'orders/compleate'
