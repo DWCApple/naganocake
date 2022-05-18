@@ -3,6 +3,15 @@ class Public::ShippingAddressesController < ApplicationController
     @shipping_addresses = ShippingAddress.all
     @new_address = ShippingAddress.new
   end
+  
+  def create
+    @shipping_address = ShippingAddress.new(shipping_address_params)
+    if @shipping_address.save
+      redirect_to shipping_addresses_path , notice: "配送先を登録しました"
+    else
+      render :index
+    end
+  end
 
   def edit
   end
