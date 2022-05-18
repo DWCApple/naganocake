@@ -1,6 +1,16 @@
 Rails.application.routes.draw do
   namespace :admin do
+    get 'items/new'
+    get 'items/create'
+    get 'items/index'
+    get 'items/show'
+    get 'items/edit'
+    get 'items/update'
+    get 'items/destroy'
+  end
+  namespace :admin do
     resources :genres, only:[:index,:edit,:create,:update]
+    resources :items
   end
   #管理者用
   namespace :admin do
