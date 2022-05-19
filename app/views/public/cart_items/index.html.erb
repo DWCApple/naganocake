@@ -2,6 +2,18 @@
 <%= link_to "カートを空にする", cart_items.destroy_all_path, method: :delete %>
 
 
-<thead>
-
-</thead>
+<table>
+  <thead>
+      <th>単価(税込)</th>
+      <th>小計</th>
+  </thead>
+  <tbody>
+  <% インスタンス変数.each do |cart_item| %>
+      <tr>
+          <td><%= (cart_item.price * 1.1).floor %></td>
+          <td><%= (cart_item.price * 1.1).floor * cart_item.amount %></td>
+          <% @合計金額 +=  (cart_item.price * 1.1).floor * cart_item.amount %>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
