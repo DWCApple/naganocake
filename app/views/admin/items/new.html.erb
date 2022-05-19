@@ -1,40 +1,46 @@
-<table>
-  <thead>
-    <h3>商品新規登録</h3>
-  </thead>
-  <tbody>
-    <%= form_with model: @item, url: admin_items_new_path do |f| %>
-    <tr>
-      <th>商品画像</th>
-       <td><%= f.file_field :image %></td>
-    </tr>
-    <tr>
-      <th>商品名</th>
-        <td><%= f.text_field :name %></td>
-    </tr>
-    <tr>
-      <th>商品説明</th>
-        <td><%= f.text_area :description %></td>
-    </tr>
-    <tr>
-      <th>ジャンル</th>
-        <td><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name) %></td>
-    </tr>
-    <tr>
-      <th>税抜き価格</th>
-        <td><%= f.text_field :price %></td>
-    </tr>
-    <tr>
-      <th>販売ステータス</th>
-        <td><%= f.radio_button :is_active, "true" %>
-        <%= f.label :is_active, "販売中" %>
-        </td>
-        <td><%= f.radio_button :is_active, "false" %>
-        <%= f.label :is_active, "販売停止中" %>
-        </td>
-    </tr>
-         <th><%= f.submit '新規投録' %></th>
+<h3>商品新規登録</h3>
+  <%= form_with model: @item, url: admin_items_new_path do |f| %>
+    <table>
+      <tbody>
+
+        <tr>
+          <th>商品画像</th>
+           <td><%= f.file_field :image %></td>
+        </tr>
+
+        <tr>
+          <th>商品名</th>
+            <td><%= f.text_field :name %></td>
+        </tr>
+
+        <tr>
+          <th>商品説明</th>
+            <td><%= f.text_area :description %></td>
+        </tr>
+
+        <tr>
+          <th>ジャンル</th>
+            <td><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name),{ include_blank: '選択してください'} %></td>
+        </tr>
+
+        <tr>
+          <th>税抜き価格</th>
+            <td><%= f.text_field :price %></td>
+        </tr>
+
+        <tr>
+          <th>販売ステータス</th>
+            <td><%= f.radio_button :is_active, "true" %>
+            <%= f.label :is_active, "販売中" %>
+            </td>
+            <td><%= f.radio_button :is_active, "false" %>
+            <%= f.label :is_active, "販売停止中" %>
+            </td>
+        </tr>
+
+             <th><%= f.submit '新規投録' %></th>
+
+      </tbody>
+    </table>
   <% end %>
-  </tbody>
-</table>
 
