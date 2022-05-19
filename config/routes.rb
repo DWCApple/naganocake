@@ -1,22 +1,14 @@
 Rails.application.routes.draw do
   namespace :admin do
-    get 'items/new'
-    get 'items/create'
-    get 'items/index'
-    get 'items/show'
-    get 'items/edit'
-    get 'items/update'
-    get 'items/destroy'
-  end
-  namespace :admin do
     resources :genres, only:[:index,:edit,:create,:update]
-    resources :items
+    resources :items, only:[:new,:index,:show,:edit,:update,:destroy]
+    post "items/new" => "items#create"
   end
   #管理者用
   namespace :admin do
     root to: 'homes#top'
   end
-  
+
   #URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
@@ -28,7 +20,7 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: "public/sessions"
   }
-  
+
     namespace :public do
     get 'orders/about'
     get 'orders/compleate'
@@ -36,6 +28,6 @@ Rails.application.routes.draw do
     get 'orders/new'
     get 'orders/show'
   end
-  
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
