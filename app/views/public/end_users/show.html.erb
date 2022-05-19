@@ -1,0 +1,9 @@
+<p><%= link_to "プロフィール編集", edit_end_users_path %></p>
+<div>
+  <p>氏名：<%= current_end_user.family_name %><%= current_end_user.first_name %></p>
+  <p>カナ：<%= current_end_user.family_name_kana %><%= current_end_user.first_name_kana %></p>
+  <p>郵便番号：<%= current_end_user.postal_code %></p>
+  <p>住所：<%= current_end_user.address %></p>
+  <p>電話番号：<%= current_end_user.telephone_number %></p>
+  <p>メールアドレス：<%= current_end_user.email %></p>
+</div>
