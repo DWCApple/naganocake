@@ -8,7 +8,11 @@
   </div>
   <div>
     <h2>新着商品</h2>
-    
+    <% @items.each do |item| %>
+      <td><%= image_tag item.image, size: "200x200" %></td>
+      <td><%= link_to item.name, item_path(item.id) %></td>
+      <td>$<%= item.price %></td>
+    <% end %>
   </div>
   <div>
     <%= link_to "全ての商品を見る＞", items_path %>
