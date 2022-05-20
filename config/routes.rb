@@ -38,13 +38,21 @@ Rails.application.routes.draw do
   }
 
 
+<<<<<<< HEAD
     delete '/cart_items/destroy_all' => "cart_items#destroy_all"
     resources :cart_items, only: [:index, :create, :update, :destroy]
+=======
+    namespace :public do
+>>>>>>> origin/develop
     get 'orders/about'
     get 'orders/compleate'
     get 'orders/index'
     get 'orders/new'
     get 'orders/show'
+<<<<<<< HEAD
+=======
+  end
+>>>>>>> origin/develop
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
