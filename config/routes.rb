@@ -37,20 +37,14 @@ Rails.application.routes.draw do
     sessions: "public/sessions"
   }
 
-<<<<<<< HEAD
-  scope module: :public do
+
     delete '/cart_items/destroy_all' => "cart_items#destroy_all"
     resources :cart_items, only: [:index, :create, :update, :destroy]
-=======
-
-    namespace :public do
->>>>>>> acf018e0e83e72138a21945bf7cb377b81bd7b93
     get 'orders/about'
     get 'orders/compleate'
     get 'orders/index'
     get 'orders/new'
     get 'orders/show'
-  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
