@@ -20,7 +20,7 @@
 
         <tr>
           <th>ジャンル</th>
-            <td><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name),{ include_blank: '選択してください'} %></td>
+            <td><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name),{ include_blank: '--選択してください--'} %></td>
         </tr>
 
         <tr>
