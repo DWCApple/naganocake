@@ -244,7 +244,7 @@ DEPENDENCIES
   capybara (>= 3.26)
   devise
   jbuilder (~> 2.7)
-  kaminari (~> 1.2.1)
+  kaminari
   listen (~> 3.3)
   pry-byebug
   puma (~> 5.0)
