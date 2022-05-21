@@ -42,6 +42,15 @@ Rails.application.routes.draw do
     get 'orders/index'
     get 'orders/new'
     get 'orders/show'
+
     end
+
+  end
+
+    scope module: :public do
+    resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
+  end
+
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
