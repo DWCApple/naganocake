@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Naganocake</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    <%= link_to "LOGO", root_path %>
+    <% if end_user_signed_in? %>
+      <%= link_to "マイページ", end_users_path %>
+      <%= link_to "商品一覧", items_path %>
+      <%= link_to "カート" %>
+      <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to "About", about_path %>
+      <%= link_to "商品一覧", items_path %>
+      <%= link_to "新規登録", new_end_user_registration_path %>
+      <%= link_to "ログイン", new_end_user_session_path %>
+    <% end %>
+
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
