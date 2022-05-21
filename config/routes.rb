@@ -44,11 +44,9 @@ Rails.application.routes.draw do
     get 'orders/show'
 
     end
-
-  end
-
     scope module: :public do
     resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
+
   end
 
 
