@@ -1,4 +1,6 @@
 class Public::CartItemsController < ApplicationController
+  # before_action:authenticate_customer!
+
   def index
     @cart_items = current_end_user.cart_items
   end
@@ -6,13 +8,24 @@ class Public::CartItemsController < ApplicationController
   def create
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.end_user_id = current_end_user.id
+
+    if !CartItem.find_by(item_id: @cart_item.item.id).nil?
+      new_cart_item = CartItem.find_by(item_id: @cart_item.item.id)
+      new_cart_item.item_amount += @cart_item.item_amount.to_i
+      new_cart_item.save
+      redirect_to cart_items_path
+    else
+      @cart_item.save
+      redirect_to cart_items_path
+    end
+
   end
 
   def update
-    @cart_item = CartItem.find(params[:id])
-    @cart_item.end_users_id = current_end_user.id
-    @cart_item.update(cart_item_params)
-    redirect_to cart_items_path
+   @cart_item = CartItem.find(params[:id])
+   @cart_item.end_user_id = current_end_user.id
+   @cart_item.update(cart_item_params)
+   redirect_to cart_items_path
   end
 
   def destroy
@@ -22,7 +35,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy_all
-    cart_items = CartItem.where(end_users_id: current_end_user)
+    cart_items = CartItem.where(end_user_id: current_end_user)
     cart_items.destroy_all
     redirect_to cart_items_path
   end
