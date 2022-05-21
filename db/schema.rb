@@ -10,6 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
+
 ActiveRecord::Schema.define(version: 2022_05_17_080351) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -39,6 +41,7 @@ ActiveRecord::Schema.define(version: 2022_05_17_080351) do
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
+
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -97,6 +100,15 @@ ActiveRecord::Schema.define(version: 2022_05_17_080351) do
     t.string "postal_code"
     t.integer "method_of_payment", default: 0, null: false
     t.integer "status", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "shipping_addresses", force: :cascade do |t|
+    t.integer "end_users_id"
+    t.string "name"
+    t.string "address"
+    t.string "postal_code"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
