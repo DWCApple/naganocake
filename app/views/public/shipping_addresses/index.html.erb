@@ -1,3 +1,4 @@
+<%= render 'layouts/error_messages', obj: @new_address %>
 <h1>配送先登録/一覧</h1>
 
 <%= form_with model: @new_address do |f| %>
@@ -35,7 +36,7 @@
             <th><%= shipping_address.name %></th>
             <th>
                 <%= link_to "編集する", edit_shipping_address_path(shipping_address.id)  %>
-                <%= link_to "削除する", shipping_addresses_path(shipping_address.id), method: :delete %>
+                <%= link_to "削除する", shipping_address_path(shipping_address.id), method: :delete %>
             </th>
         </tr>
         <% end %>
