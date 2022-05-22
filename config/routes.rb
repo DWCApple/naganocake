@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   #管理者用
   namespace :admin do
     root to: 'homes#top'
-    resources :end_users, only: [:index, :show, :edit]
+    resources :end_users, only: [:index, :show, :edit, :update]
   end
 
   #URL /admin/sign_in ...

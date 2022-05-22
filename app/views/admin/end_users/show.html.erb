@@ -1,2 +1,46 @@
-<h1>Admin::EndUsers#show</h1>
-<p>Find me in app/views/admin/end_users/show.html.erb</p>
+<h1><%= @end_user.family_name %><%= @end_user.first_name %>さんの詳細ページ</h1>
+
+<table>
+  <tr>
+    <th>会員ID</th>
+    <td><%= @end_user.id %></td>
+  </tr>
+  <tr>
+    <th>氏名</th>
+    <td><%= @end_user.family_name %>  <%= @end_user.first_name %></td>
+  </tr>
+  <tr>
+    <th>フリガナ</th>
+    <td><%= @end_user.family_name_kana %>  <%= @end_user.first_name_kana %></td>
+  </tr>
+  <tr>
+    <th>郵便番号</th>
+    <td><%= @end_user.postal_code %></td>
+  </tr>
+  <tr>
+    <th>住所</th>
+    <td><%= @end_user.address %></td>
+  </tr>
+  <tr>
+    <th>電話番号</th>
+    <td><%= @end_user.telephone_number %></td>
+  </tr>
+  <tr>
+    <th>メールアドレス</th>
+    <td><%= @end_user.email %></td>
+  </tr>
+  <tr>
+    <th>会員ステータス</th>
+    <td>
+      <% if @end_user.is_deleted == false %>
+        <%= "有効" %>
+      <% else %>
+        <%= "退会" %>
+      <% end %>
+    </td>
+  </tr>
+</table>
+<div>
+  <%= link_to "編集する", edit_admin_end_user_path(@end_user.id), class: "btn btn-success" %>
+  <%#= link_to "注文履歴一覧を見る", order_items_path, class: "btn btn-primary" %>
+</div>

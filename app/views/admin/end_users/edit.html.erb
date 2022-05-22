@@ -1,2 +1,51 @@
-<h1>Admin::EndUsers#edit</h1>
-<p>Find me in app/views/admin/end_users/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h2 class="bg-secondary"><strong><%= @end_user.family_name %><%= @end_user.first_name %></strong>さんの<strong>会員情報編集</strong></h2>
+    
+    <%= form_with model: @end_user, url: admin_end_user_path(@end_user.id), method: :patch do |f| %>
+    <table class="table text-center">
+      <tr>
+        <th>会員ID</th>
+        <td><%= @end_user.id %></td>
+      </tr>
+      <tr>
+        <th>氏名</th>
+        <td><%= f.text_field :family_name %>  <%= f.text_field :first_name %></td>
+      </tr>
+      <tr>
+        <th>フリガナ</th>
+        <td><%= f.text_field :family_name_kana %>  <%= f.text_field :first_name_kana %></td>
+      </tr>
+      <tr>
+        <th>郵便番号</th>
+        <td><%= f.text_field :postal_code %></td>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <td><%= f.text_field :address %></td>
+      </tr>
+      <tr>
+        <th>電話番号</th>
+        <td><%= f.text_field :telephone_number %></td>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= f.text_field :email %></td>
+      </tr>
+    
+      <tr>
+        <th>会員ステータス</th>
+        <td>
+          <%= f.radio_button :payment_method, "is_deleted" %>
+          <%= f.label :payment_method, "有効", value: false %>
+    
+          <%= f.radio_button :payment_method, "is_deleted" %>
+          <%= f.label :payment_method, "退会",value: true %>
+    
+    </table>
+    <div class="form-group">
+      <%= f.submit "変更内容を保存する", class: "btn btn-success" %>
+    </div>
+    <% end %>
+  </div>
+</div>
