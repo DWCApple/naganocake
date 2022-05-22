@@ -5,15 +5,15 @@
     <%= form_with model: @genre, url: admin_genres_path do |f| %>
     <td>ジャンル名</td>
     <td><%= f.text_field :name %></td>
-    <td><%= f.submit '新規投録' %></td>
+    <td><%= f.submit '新規投録', class: "btn btn-sm btn-success" %></td>
     <% end %>
   </thead>
-  <tbody>
+  <tbody class = "table">
     <th>ジャンル</th>
     <% @genres.each do |genre| %>
     <tr>
     <td><%= genre.name %></td>
-    <td><%= link_to '編集する', edit_admin_genre_path(genre.id) %></td>
+    <td><%= link_to '編集する', edit_admin_genre_path(genre.id), class: "btn btn-sm btn-success" %></td>
     </tr>
     <% end %>
   </tbody>
