@@ -25,7 +25,7 @@
           税込価格
           (税抜価格）
         </th>
-         <td><%= @item.price %></td>
+         <td><%= number_to_currency(@item.price) %></td>
       </tr>
 
       <tr>
