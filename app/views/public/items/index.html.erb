@@ -5,5 +5,5 @@
     <td><%= link_to item.name, item_path(item.id) %></td>
     <td>$<%= item.price %></td>
 </div>
-<%# paginate item %>
+<%= paginate @items %>
   <% end %>
