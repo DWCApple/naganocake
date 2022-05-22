@@ -5,8 +5,8 @@ class CartItem < ApplicationRecord
   belongs_to :end_user
 
   #累計金額の表示
-  # def billing_amount
-  #   product.price * quantity
-  # end
+  def subtotal
+    item.add_tax_price * quantity
+  end
 
 end
