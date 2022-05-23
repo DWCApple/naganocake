@@ -1,6 +1,13 @@
+
 <table>
-  <thead>商品一覧</thead>
-    <tbody>
+  <thead>
+    <h3>
+    <span class="border border-light">
+      商品一覧
+    </span>
+    </h3>
+  </thead>
+    <tbody class = "table">
 
       <tr>
         <th>商品ID</th>
@@ -14,15 +21,17 @@
       <tr>
         <td><%= item.id %></td>
         <td><%= link_to item.name, admin_item_path(item.id) %></td>
-        <td><%= item.price %></td>
+        <td><%= number_to_currency(item.price) %></td>
         <td><%= item.genre.name %></td>
-        <td><% if item.is_active == true %>
-              <%= "販売中" %>
+        <td>
+            <% if item.is_active == true %>
+              <strong class="text-success">販売中</strong>
             <% else %>
-              <%= "販売停止中" %>
+              <strong class="text-black-50">販売停止中</strong>
             <% end %>
         </td>
       </tr>
       <% end %>
     </tbody>
 </table>
+<%= paginate @items %>

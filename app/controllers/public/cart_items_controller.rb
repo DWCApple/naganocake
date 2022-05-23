@@ -2,6 +2,7 @@ class Public::CartItemsController < ApplicationController
   # before_action:authenticate_customer!
 
   def index
+    @total_price = 0
     @cart_items = current_end_user.cart_items
   end
 
@@ -11,7 +12,7 @@ class Public::CartItemsController < ApplicationController
 
     if !CartItem.find_by(item_id: @cart_item.item.id).nil?
       new_cart_item = CartItem.find_by(item_id: @cart_item.item.id)
-      new_cart_item.item_amount += @cart_item.item_amount.to_i
+      new_cart_item.quantity += @cart_item.quantity.to_i
       new_cart_item.save
       redirect_to cart_items_path
     else

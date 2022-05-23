@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   #管理者用
   namespace :admin do
     root to: 'homes#top'
+    resources :end_users, only: [:index, :show, :edit, :update]
   end
 
   #URL /admin/sign_in ...
@@ -44,10 +45,11 @@ Rails.application.routes.draw do
     get 'orders/show'
 
     end
+
     scope module: :public do
     resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
 
-  end
+    end
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
