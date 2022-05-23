@@ -1,8 +1,8 @@
 <h1>商品詳細</h1>
-  <td><%= image_tag @item.image, size: "200x200" %></td>
+  <td><%= image_tag @item.image, size: "100x100" %></td>
   <td><%= @item.name %></td>
   <td><%= @item.description %></td>
-  <td>$<%= @item.price %></td>
+  <td><%= @item.price %>円</td>
 
  <%= form_with(model: @cart_item,url: cart_items_path, method: :post,local: true)do |f| %>
    <%= f.hidden_field :item_id, :value => @item.id %>
