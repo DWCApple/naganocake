@@ -1,6 +1,8 @@
-<h1><%= @end_user.family_name %><%= @end_user.first_name %>さんの詳細ページ</h1>
-
-<table>
+<div class="container">
+  <div class="row">
+    <h2 class="bg-light"><strong><%= @end_user.family_name %><%= @end_user.first_name %></strong>さんの詳細ページ</h2>
+  </div>
+  <table class="table text-left">
   <tr>
     <th>会員ID</th>
     <td><%= @end_user.id %></td>
@@ -33,14 +35,15 @@
     <th>会員ステータス</th>
     <td>
       <% if @end_user.is_deleted == false %>
-        <%= "有効" %>
+        <strong class="text-success"><%= "有効" %></strong>
       <% else %>
-        <%= "退会" %>
+        <strong class="text-secondary"><%= "退会" %></strong>
       <% end %>
     </td>
   </tr>
 </table>
-<div>
-  <%= link_to "編集する", edit_admin_end_user_path(@end_user.id), class: "btn btn-success" %>
-  <%#= link_to "注文履歴一覧を見る", order_items_path, class: "btn btn-primary" %>
+  <div class="form-group text-center">
+    <%= link_to "編集する", edit_admin_end_user_path(@end_user.id), class: "btn btn-success" %>
+    <%#= link_to "注文履歴一覧を見る", order_items_path, class: "btn btn-primary" %>
+  </div>
 </div>
