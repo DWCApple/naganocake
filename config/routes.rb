@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   #管理者用
   namespace :admin do
     root to: 'homes#top'
+    resources :end_users, only: [:index, :show, :edit, :update]
   end
 
   #URL /admin/sign_in ...
@@ -26,11 +27,8 @@ Rails.application.routes.draw do
     get '/end_users/:id/unsubscribe' => 'end_users#unsubscribe', as: 'unsubscribe'
     # 論理削除用のルーティング
     patch '/end_users/:id/withdrawal' => 'end_users#withdrawal', as: 'withdrawal'
-  end
 
-  scope module: :public do
     resources :items, only: [:index, :show]
-  end
 
   devise_for :end_users,skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -38,13 +36,21 @@ Rails.application.routes.draw do
   }
 
 
-    namespace :public do
+    delete '/cart_items/destroy_all' => "cart_items#destroy_all"
+    resources :cart_items, only: [:index, :create, :update, :destroy]
     get 'orders/about'
     get 'orders/compleate'
     get 'orders/index'
     get 'orders/new'
     get 'orders/show'
-  end
+
+    end
+
+    scope module: :public do
+    resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
+
+    end
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
