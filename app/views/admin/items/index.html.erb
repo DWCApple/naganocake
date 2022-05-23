@@ -1,7 +1,11 @@
 
 <table>
   <thead>
-    <h3>商品一覧</h3>
+    <h3>
+    <span class="border border-light">
+      商品一覧
+    </span>
+    </h3>
   </thead>
     <tbody class = "table">
 
@@ -16,14 +20,14 @@
       <% @items.each do |item| %>
       <tr>
         <td><%= item.id %></td>
-        <td><%= link_to item.name, admin_item_path(item.id), class: "text-dark" %></td>
+        <td><%= link_to item.name, admin_item_path(item.id) %></td>
         <td><%= number_to_currency(item.price) %></td>
         <td><%= item.genre.name %></td>
         <td>
             <% if item.is_active == true %>
-              <span class="text-success">販売中</span>
+              <strong class="text-success">販売中</strong>
             <% else %>
-              <%= "販売停止中" %>
+              <strong class="text-black-50">販売停止中</strong>
             <% end %>
         </td>
       </tr>
