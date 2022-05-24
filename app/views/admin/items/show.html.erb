@@ -1,11 +1,17 @@
-
-  <h3>商品詳細</h3>
-
   <div class="container">
-    <div class="row">
+    <div class="row mt-5">
+      <div class="col-2 text-right">
+        <h3 class="bg-light">
+          <strong>
+            商品詳細
+          </strong>
+        </h3>
+      </div>
+    </div>
 
+    <div class="row mt-5">
       <div class="col-4">
-        <%= image_tag @item.get_image, size: "200x150" %>
+        <%= image_tag @item.get_image, size: "350x250" %>
       </div>
 
         <div class="col-8">
@@ -13,37 +19,67 @@
             <tbody>
 
               <tr>
-                <th>商品名</th>
-                  <td><%= @item.name %></td>
-              </tr>
+                <th>
+                  <p>商品名</p>
+                </th>
 
-              <tr>
-                <th>商品説明</th>
-                  <td><%= @item.description %></td>
-              </tr>
-
-              <tr>
-                <th>ジャンル</th>
-                  <td><%= @item.genre.name %></td>
+                <td>
+                  <p><%= @item.name %></p>
+                </td>
               </tr>
 
               <tr>
                 <th>
-                  <p>税込価格</p>
-                  <p>(税抜価格）</p>
+                  <P>商品説明</P>
                 </th>
-                  <td><%= number_to_currency(@item.price) %></td>
+
+                <td>
+                  <p><%= @item.description %></P>
+                </td>
               </tr>
 
               <tr>
-                <th>販売ステータス</th>
+                <th>
+                  <p>ジャンル</P>
+                </th>
+
+                  <td>
+                    <p><%= @item.genre.name %></P>
+                  </td>
+              </tr>
+
+              <tr>
+                <th>
+                  <p>税込価格<br>
+                  (税抜価格)
+                  </p>
+                </th>
+
+                  <td>
+                    <p>
+                      <%= number_to_currency(@item.add_tax_price) %>
+                      (<%= number_to_currency(@item.price) %>)
+                    </p>
+                  </td>
+              </tr>
+
+              <tr>
+                <th>
+                  <p>販売ステータス</P>
+                </th>
+
                   <td><% if @item.is_active == true %>
-                    <strong class="text-success">販売中</strong>
+                    <p>
+                      <strong class="text-success ml-4">販売中</strong>
+                    </P>
                       <% else %>
-                    <strong class="text-black-50">販売停止中</strong>
+                    <p>
+                      <strong class="text-black-50 ml-4">販売停止中</strong>
+                    </P>
                       <% end %>
                   </td>
               </tr>
+
               <tr>
                   <td><%= link_to '編集する', edit_admin_item_path(@item.id), class: "btn btn-lg btn-success mt-5" %></td>
               </tr>
@@ -53,4 +89,3 @@
     </div>
   </div>
 
-   
