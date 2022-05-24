@@ -20,6 +20,7 @@
     </button>
 
   <body class="d-flex flex-column vh-100">
+
          <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
           <% if end_user_signed_in? %>
@@ -71,8 +72,10 @@
   </div>
 
 
+
   
      <main class="mb-auto">
+
       <p id="notice"><%= notice %></p>
         <%= yield %>
     </main>

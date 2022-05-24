@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
+  protect_from_forgery
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -29,7 +30,7 @@ class Public::SessionsController < Devise::SessionsController
   # 会員の論理削除のための記述。退会後は、同じアカウントでは利用できない。
   def reject_end_user
     @user = EndUser.find_by(name: params[:user][:name])
-    if @user 
+    if @user
       if @user.valid_password?(params[:user][:password]) && (@user.is_deleted == false)
         flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
         redirect_to new_end_user_registration
