@@ -1,63 +1,78 @@
   <h2>プロフィール編集</h2>
   <%= form_with model: @user, url: end_users_path do |f| %>
 
-  <div class="field">
-    <%= f.label :'(姓)' %><br>
-    <%= f.text_field :family_name %>
+  <div class="container">
+    　<div class="row text-left">
+    　   <div class="col-md-3">
+          名前
+        </div>
+        <div class="col-md-3" style="width-left: 20px;">
+          <%= f.label :'(姓)' %>
+          <%= f.text_field :family_name %>
+        </div>
+        <div class="col-md-3">
+          <%= f.label :'(名)' %>
+          <%= f.text_field :first_name %>
+        </div>
+      </div>
+
+      <div class="row text-left">
+        <div class="col-md-3">
+          フリガナ
+        </div>
+        <div class="col-md-3">
+          <%= f.label :'(セイ)' %>
+          <%= f.text_field :family_name_kana %>
+        </div>
+        <div class="col-md-3">
+          <%= f.label :'(メイ)' %>
+          <%= f.text_field :first_name_kana %>
+        </div>
+      </div>
+
+      <div class="row text-left">
+        <div class="col-md-3">
+          <%= f.label :'郵便番号' %>
+        </div>
+        <div class="col-md-3"style="padding-left: 61px;">
+          <%= f.text_field :postal_code %>
+        </div>
+      </div>
+
+      <div class="row text-left">
+        <div class="col-md-3">
+          <%= f.label :'住所' %>
+        </div>
+        <div class="col-md-3"style="padding-left: 61px;">
+          <%= f.text_field :address %>
+        </div>
+      </div>
+
+      <div class="row text-left">
+        <div class="col-md-3">
+          <%= f.label :'電話番号' %>
+        </div>
+        <div class="col-md-3"style="padding-left: 61px;">
+          <%= f.text_field :telephone_number %>
+        </div>
+      </div>
+
+      <div class="row text-left">
+        <div class="col-md-3">
+          <%= f.label :'メールアドレス' %>
+        </div>
+        <div class="col-md-3" style="padding-left: 61px;">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
+      </div>
   </div>
 
-  <div class="field">
-    <%= f.label :'(名)' %><br>
-    <%= f.text_field :first_name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :'(セイ)' %><br>
-    <%= f.text_field :family_name_kana %>
-  </div>
-
-  <div class="field">
-    <%= f.label :'(メイ)' %><br>
-    <%= f.text_field :first_name_kana %>
-  </div>
-
-  <div class="field">
-    <%= f.label :'メールアドレス' %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :'郵便番号(ハイフンなし)' %><br>
-    <%= f.text_field :postal_code %>
-  </div>
-
-  <div class="field">
-    <%= f.label :'住所' %><br>
-    <%= f.text_field :address %>
-  </div>
-
-  <div class="field">
-    <%= f.label :'電話番号(ハイフンなし)' %><br>
-    <%= f.text_field :telephone_number %>
-  </div>
-
-  <div class="field">
-    <%= f.label :'パスワード(6文字以上)' %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :'パスワード(確認用)' %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "編集内容を保存" %>
-  </div>
-
-  <%= link_to "退会する", unsubscribe_path(current_end_user) %>
-
+    <div class="container">
+      <div class="row text-senter">
+        <div class="col-md-12" style="margin-top: 20px; padding-left: 346px;">
+            <%= f.submit "編集内容を保存", class: "btn btn-primary"%>
+            <%= link_to "退会する", unsubscribe_path(current_end_user), class: "btn btn-danger" %>
+        </div>
+      </div>
+    </div>
 <% end %>

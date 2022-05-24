@@ -5,6 +5,7 @@
     <%= csp_meta_tag %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/73a12313af.js" crossorigin="anonymous"></script>
   </head>
 
 
@@ -42,10 +43,10 @@
           <%= link_to '商品一覧', admin_items_path, class: 'nav-link text-dark btn btn-outline-secondary' %>
             </li>
             <li class="nav-item m-3">
-              <%= link_to '会員一覧', admin_items_path, class: 'nav-link text-dark btn btn-outline-secondary' %>
+              <%= link_to '会員一覧', admin_end_users_path, class: 'nav-link text-dark btn btn-outline-secondary' %>
             </li>
             <li class="nav-item m-3">
-              <%= link_to '注文履歴一覧', admin_items_path, class: 'nav-link text-dark btn btn-outline-secondary' %>
+              <%= link_to '注文履歴一覧', admin_root_path, class: 'nav-link text-dark btn btn-outline-secondary' %>
             </li>
             <li class="nav-item m-3">
               <%= link_to 'ジャンル一覧', admin_genres_path, class: 'nav-link text-dark btn btn-outline-secondary' %>
@@ -74,14 +75,14 @@
 
 
 
-  
+
      <main class="mb-auto">
 
       <p id="notice"><%= notice %></p>
         <%= yield %>
     </main>
- 
-  
+
+
     <footer class="bg-info text-white p-4">
       <div class="container">
         <div class="row no-gutters">
