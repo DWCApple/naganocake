@@ -7,10 +7,11 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-<div class="container">
+
     <header>
       <!-- Just an image -->
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #20c997;">
+  <div class="container">
   <a class="navbar-brand p-3" href="#">
     <%= link_to image_tag("naganocake.jpg", size: '80x80'), root_path %>
   </a>
@@ -18,6 +19,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
+  <body class="d-flex flex-column vh-100">
 
          <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
@@ -71,11 +73,24 @@
 
 
 
-  <body>
-     <main>
+  
+     <main class="mb-auto">
+
       <p id="notice"><%= notice %></p>
         <%= yield %>
     </main>
+ 
+  
+    <footer class="bg-info text-white p-4">
+      <div class="container">
+        <div class="row no-gutters">
+          <div class="col-md-12 text-center">
+            <p>長野最上級ケーキを召し上がれ</p>
+            <%= image_tag('cake.png', size: '100x100') %>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 
 </html>
