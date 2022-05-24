@@ -1,6 +1,13 @@
-<h1>会員一覧</h1>
-<table class="table"> 
-  <thead>
+<div class="container">
+  <div class="row mb-3">
+    <h2>
+      <strong>
+        会員一覧
+      </strong>
+    </h2>
+  </div>
+  <table class="table"> 
+  <thead class="bg-light">
     <tr>
       <th>会員ID</th>
       <th>氏名</th>
@@ -11,7 +18,7 @@
       <% @end_users.each do |end_user| %>
       <tr>
         <td><%= end_user.id %></td>
-        <td>
+        <td class="text-black">
           <%= link_to admin_end_user_path(end_user.id) do %>
           <%= end_user.family_name %><%= end_user.first_name %>
           <% end %>  
@@ -19,13 +26,15 @@
         <td><%= end_user.email %></td>
         <td>
           <% if end_user.is_deleted == false %>
-            <%= "有効" %>
+            <strong class="text-success"><%= "有効" %></strong>
           <% else %>
-            <%= "退会" %>
+            <strong class="text-secondary"><%= "退会" %></strong>
           <% end %>
           </td>
       </tr>
       <% end %>
     </tbody>
 </table>
+</div>
+
 <%= paginate @end_users %>

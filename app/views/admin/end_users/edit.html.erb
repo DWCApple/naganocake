@@ -1,9 +1,10 @@
 <div class="container">
   <div class="row">
-    <h2 class="bg-secondary"><strong><%= @end_user.family_name %><%= @end_user.first_name %></strong>さんの<strong>会員情報編集</strong></h2>
+    <h2 class="bg-light"><strong><%= @end_user.family_name %><%= @end_user.first_name %></strong>さんの会員情報編集</h2>
+  </div>
     
     <%= form_with model: @end_user, url: admin_end_user_path(@end_user.id), method: :patch do |f| %>
-    <table class="table text-center">
+    <table class="table text-left">
       <tr>
         <th>会員ID</th>
         <td><%= @end_user.id %></td>
@@ -36,16 +37,19 @@
       <tr>
         <th>会員ステータス</th>
         <td>
-          <%= f.radio_button :payment_method, "is_deleted" %>
-          <%= f.label :payment_method, "有効", value: false %>
-    
-          <%= f.radio_button :payment_method, "is_deleted" %>
-          <%= f.label :payment_method, "退会",value: true %>
-    
+          <strong>
+            <%= f.radio_button :payment_method, "is_deleted" %>
+            <%= f.label :payment_method, "有効", value: false %>
+      
+            <%= f.radio_button :payment_method, "is_deleted" %>
+            <%= f.label :payment_method, "退会",value: true %>
+          </strong>
+        </td>
+      </tr>
     </table>
-    <div class="form-group">
+    <div class="form-group text-center">
       <%= f.submit "変更内容を保存する", class: "btn btn-success" %>
     </div>
     <% end %>
-  </div>
+  
 </div>
