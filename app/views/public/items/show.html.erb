@@ -1,12 +1,33 @@
-<h1>商品詳細</h1>
-  <td><%= image_tag @item.image, size: "100x100" %></td>
-  <td><%= @item.name %></td>
-  <td><%= @item.description %></td>
-  <td><%= @item.price %>円</td>
-
- <%= form_with(model: @cart_item,url: cart_items_path, method: :post,local: true)do |f| %>
-   <%= f.hidden_field :item_id, :value => @item.id %>
-   <%= f.select :quantity, [[1], [2], [3]] %>
-   <%= f.submit "カートに入れる" %>
- <% end %>
+  <div class="container">
+    <div class="mx-auto" style="width: 700px;">
+      <div class="row">
+        <div class="col-md-4">
+            <%= image_tag @item.image, size: "250x250" %>
+        </div>
+        <div class="col-md-8">
+          <h3 class="font-weight-bold">
+            <div style="margin-left: 30px;">
+              <%= @item.name %>
+            </div>
+          </h3>
+          <h5 class="font-weight-bold">
+            <div style="margin: 30px;">
+              <%= @item.description %>
+            </div>
+            <div style="margin: 30px;">
+              <%= @item.price %>円
+            </div>
+          </h5>
+            <div style="margin: 30px;">
+              <%= form_with(model: @cart_item,url: cart_items_path, method: :post,local: true)do |f| %>
+                <%= f.hidden_field :item_id, :value => @item.id %>
+                <%= f.select :quantity, [[1], [2], [3],[4],[5],[6],[7],[8],[9],[10]] ,{ include_blank: '個数選択' } %>
+                <%= f.submit 'カートに入れる', class: "btn btn-sm btn-success" %>
+              <% end %>
+            </div>
+          </h5>
+        </div>
+      </div>
+    </div>
+  </div>
 
