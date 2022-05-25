@@ -1,13 +1,14 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :authenticate_end_user!, except: [:top,:about,:index]
 
   def after_sign_in_path_for(resource)
     items_path(current_end_user)
   end
 
-  # def after_sign_out_path_for(resource)
-  #   root_path
-  # end
+  def after_sign_out_path_for(resource)
+   root_path
+  end
 
   private
 

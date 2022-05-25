@@ -1,9 +1,44 @@
-<p><%= link_to "プロフィール編集", edit_end_users_path %></p>
-<div>
-  <p>氏名：<%= current_end_user.family_name %><%= current_end_user.first_name %></p>
-  <p>カナ：<%= current_end_user.family_name_kana %><%= current_end_user.first_name_kana %></p>
-  <p>郵便番号：<%= current_end_user.postal_code %></p>
-  <p>住所：<%= current_end_user.address %></p>
-  <p>電話番号：<%= current_end_user.telephone_number %></p>
-  <p>メールアドレス：<%= current_end_user.email %></p>
+<div style="margin-left: 20px;">
+  <p class="font-weight-bold">
+    登録情報
+    <%= link_to "プロフィール編集", edit_end_users_path, class: "btn btn-success"%>
+  </p>
+  <table class="table col-md-6">
+    <thead>
+      <tr>
+        <th class="col-md-3 border border-dark">氏名</th>
+        <th class="border border-dark"><%= current_end_user.family_name %><%= current_end_user.first_name %></th>
+      </tr>
+      <tr>
+        <th class="col-md-3 border border-dark">カナ</th>
+        <th class="border border-dark"><%= current_end_user.family_name_kana %><%= current_end_user.first_name_kana %></th>
+      </tr>
+      <tr>
+        <th class="col-md-3 border border-dark">郵便番号</th>
+        <th class="border border-dark"><%= current_end_user.postal_code %></th>
+      </tr>
+      <tr>
+        <th class="col-md-3 border border-dark">住所</th>
+        <th class="border border-dark"><%= current_end_user.address %></th>
+      </tr>
+      <tr>
+        <th class="col-md-3 border border-dark">電話番号</th>
+        <th class="border border-dark"><%= current_end_user.telephone_number %></th>
+      </tr>
+      <tr>
+        <th class="col-md-3 border border-dark">メールアドレス</th>
+        <th class="border border-dark"><%= current_end_user.email %></th>
+      </tr>
+    </thead>
+  </table>
+  <div class="font-weight-bold">
+    <div>
+    配送先
+      <%= link_to "一覧を見る", shipping_addresses_path, class: "btn btn-primary"%>
+      </div>
+    <div style="margin-top: 10px;">
+      注文履歴
+      <%= link_to "一覧を見る", orders_path, class: "btn btn-primary"%>
+    </div>
+  </div>
 </div>
