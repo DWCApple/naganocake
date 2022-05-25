@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
 
     validates :name,:postal_code,:address,
-            :payment,:postage,:total_payment,:order_status, presence: true
+              :method_of_payment,:postages,:billing_amount,:order_status, presence: true
 
     belongs_to :end_user
     has_many :order_items

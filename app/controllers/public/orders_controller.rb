@@ -9,7 +9,7 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @cart_items = current_end_user.cart_items.all
     @total_price = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
-    @total_payment = @total_price + @order.postage
+    # @billing_amount = @total_price + @order.postages
     if params[:order][:order_addresses] == '0'
       @order.postal_code = current_end_user.postal_code
       @order.address = current_end_user.address
@@ -64,7 +64,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:end_user_id, :name, :postal_code, :address, :payment, :postage, :total_payment, :order_status)
+    params.require(:order).permit(:end_user_id, :name, :postal_code, :address, :method_of_payment, :postages, :billing_amount, :status)
   end
 
   def address_params
