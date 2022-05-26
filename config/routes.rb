@@ -1,15 +1,12 @@
 Rails.application.routes.draw do
-
-  namespace :admin do
-    resources :genres, only:[:index,:edit,:create,:update]
-    resources :items, only:[:new,:index,:show,:edit,:update,:destroy]
-    post "items/new" => "items#create"
-  end
-
   #管理者用
   namespace :admin do
     root to: 'homes#top'
     resources :end_users, only: [:index, :show, :edit, :update]
+    resources :genres, only: [:index,:edit,:create,:update]
+    resources :items, only: [:new,:index,:show,:edit,:update,:destroy]
+    post "items/new" => "items#create"
+    resources :orders, only: [:show, :update]  
   end
 
   #URL /admin/sign_in ...
