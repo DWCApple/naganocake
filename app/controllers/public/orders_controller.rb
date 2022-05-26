@@ -1,4 +1,6 @@
 class Public::OrdersController < ApplicationController
+  before_action :check, only:[:new,:confirm]
+
   def new
     @order = Order.new
     @order.end_user_id = current_end_user.id
@@ -73,4 +75,12 @@ class Public::OrdersController < ApplicationController
   def address_params
     params.require(:address).permit(:postal_code, :address, :name)
   end
+
+  def check
+    if current_end_user.cart_items.exists? == false
+
+      redirect_to cart_items_path
+    end
+  end
+
 end
