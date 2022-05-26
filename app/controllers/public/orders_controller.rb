@@ -1,4 +1,5 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_end_user!, except: [:top,:about,:index]
   def new
     @order = Order.new
     @order.end_user_id = current_end_user.id
@@ -9,7 +10,7 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @cart_items = current_end_user.cart_items.all
     @total_price = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
-    @billing_amount = @total_price + @order.postages
+    @billing_amount = @total_price + 600
     if params[:order][:order_addresses] == '0'
       @order.postal_code = current_end_user.postal_code
       @order.address = current_end_user.address

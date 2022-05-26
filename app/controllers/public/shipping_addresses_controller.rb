@@ -1,4 +1,5 @@
 class Public::ShippingAddressesController < ApplicationController
+  before_action :authenticate_end_user!, except: [:top,:about,:index]
   def index
     @shipping_addresses = ShippingAddress.all
     @new_address = ShippingAddress.new

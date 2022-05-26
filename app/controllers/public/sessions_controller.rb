@@ -3,6 +3,7 @@
 class Public::SessionsController < Devise::SessionsController
   protect_from_forgery
   before_action :customer_state, only: [:create]
+  before_action :authenticate_end_user!, except: [:top,:about,:index]
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
