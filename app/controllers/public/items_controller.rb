@@ -1,4 +1,5 @@
 class Public::ItemsController < ApplicationController
+  before_action :authenticate_end_user!, except: [:top,:about,:index]
   def index
     @items = Item.page(params[:page]).per(8)
   end

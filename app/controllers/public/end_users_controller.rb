@@ -1,4 +1,5 @@
 class Public::EndUsersController < ApplicationController
+  before_action :authenticate_end_user!, except: [:top,:about,:index]
 
   def show
   end

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Public::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  before_action :authenticate_end_user!, except: [:top,:about,:index]
   # You should configure your model like this:
   # devise :omniauthable, omniauth_providers: [:twitter]
 
