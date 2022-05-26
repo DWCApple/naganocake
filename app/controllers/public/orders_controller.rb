@@ -1,4 +1,5 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_end_user!, except: [:top,:about,:index]
   def new
     @order = Order.new
     @order.end_user_id = current_end_user.id
