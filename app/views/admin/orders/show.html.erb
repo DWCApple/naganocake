@@ -20,10 +20,9 @@
     <td><%= @order.method_of_payment %></td>
   </tr>
   <tr>
-    <%# form_with model: @order, url: admin_order_path, method: :patch, local true do |f| %>
     <th>注文ステータス</th>
-    <td><% order_status_eg = Order.order_status_methods.key(@order.status) %>
-        <%= Order.order_status_methods_i18n [order_status_eg] %>
+    <td><% status_eg = Order.status_methods.key(@order.status) %>
+        <%= Order.status_methods_i18n [status_eg] %>
     </td>
     <% end %>
   </tr>
