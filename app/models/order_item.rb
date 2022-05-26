@@ -1,6 +1,6 @@
 class OrderItem < ApplicationRecord
 
-  validates :item_quantity,:price,:production_status, presence: true
+  validates :quantity,:price,:production_status, presence: true
 
   belongs_to :item
   belongs_to :order
