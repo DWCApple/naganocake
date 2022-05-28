@@ -12,46 +12,85 @@
   <div class="container">
     <div class="col-8">
       <table class="table">
-        <thead class="bg-light">
+        <strong>注文情報</strong>
           <tr>
             <th>注文日</th>
-            <th>配送先</th>
-            <th>注文商品</th>
-            <th>支払金額</th>
-            <th>ステータス</th>
-            <th>注文詳細</th>
+              <td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
           </tr>
-        </thead>
+
+          <tr>
+            <th>配送先</th>
+              <td>
+              〒<%= @order.postal_code %><br>
+              <%= @order.address %>
+              </td>
+          </tr>
+
+          <tr>
+            <th>支払方法</th>
+              <td>
+                <% payment_eg = Order.method_of_payments.key(@order.method_of_payment) %>
+                <%= @order.method_of_payment_i18n %>
+              </td>
+          </tr>
+
+
+          <tr>
+            <th>ステータス</th>
+              <td><%= @order.status_i18n %></td>
+          </tr>
       </table>
-    </div>
 
     <div class="col-4">
     <table class="table">
-        <thead class="bg-light">
+        <strong>請求情報</strong>
           <tr>
-            <th>注文日</th>
-            <th>配送先</th>
-            <th>注文商品</th>
-            <th>支払金額</th>
-            <th>ステータス</th>
-            <th>注文詳細</th>
+            <th>商品合計</th>
+              <td></td>
           </tr>
-        </thead>
+
+          <tr>
+            <th>配送料</th>
+              <td></td>
+          </tr>
+
+          <tr>
+            <th>
+              <strong>ご請求金額</strong>
+            </th>
+              <td></td>
+          </tr>
     </table>
-    </div>
+  </div>
 
   </div>
 
+  <% @order_items.each do |order_item| %>
     <table class="table">
       <thead class="bg-light">
+        <strong>注文内容</strong>
         <tr>
-          <th>注文日</th>
-          <th>配送先</th>
-          <th>注文商品</th>
-          <th>支払金額</th>
-          <th>ステータス</th>
-          <th>注文詳細</th>
+          <th>商品</th>
+          <th>単価(税込)</th>
+          <th>個数</th>
+          <th>小計</th>
         </tr>
-      </thead>
-    </table>
 
+        <tr>
+          <td><%= order_item.item.name %><br></td>
+          
+          <td><%= order_item.item.price %><br></td>
+
+          
+
+          
+          <td><%= order_item.quantity %><br></td>
+
+          
+
+          
+          <td></td>
+        </tr>
+
+    </table>
+ <% end %>
