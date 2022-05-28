@@ -19,18 +19,18 @@
       <th>支払方法</th>
       <td><%= @order.method_of_payment_i18n %></td>
     </tr>
-     <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch, local: true do |f| %>
     <tr>
       <th>注文ステータス</th>
       <td>
         <div class="form-group form-inline">
-          <%= f.select :status, Order.statuses_i18n.keys.map{|k| [I18n.t("enum.order.status.#{k}"), k]}, {}, class: 'form-control col-4' %>
-          <%= f.submit '更新', class: "btn btn-sm btn-success m-2" %>
+          <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch, local: true do |f| %>
+            <%= f.select :status, Order.statuses_i18n.keys.map{|k| [I18n.t("enums.order.status.#{k}"), k]}, {}, class: 'form-control col-7' %>
+            <%= f.submit '更新', class: "btn btn-sm btn-success m-2" %>
+          <% end %>
         </div>
       </td>
     </tr>
   </table>
-  <% end %>
 
 <div class="container">
   <div class="row">
@@ -45,17 +45,24 @@
             <th>制作ステータス</th>
           </tr>
           <tbody>
-            <% @order_items.map do |order_items| %>
+            <% @order_items.each do |order_item| %>
             <tr>
               <td>
-                <%= order_items.item.name %><br>
+                <%= order_item.item.name %><br>
               </td>
-              <td><%= order_items.price %></td>
-              <td><%= order_items.quantity %></td>
-              <td><%= order_items.price*order_items.quantity %></td>
-              <td><%= order_items.production_status_i18n %></td>
+              <td><%= number_to_currency(order_item.price) %></td>
+              <td><%= order_item.quantity %></td>
+              <td><%= number_to_currency(order_item.price*order_item.quantity) %></td>
+              <td>
+                <div class="form-group form-inline">
+                  <%= form_with model: order_item, url: admin_order_item_path(order_item.id), method: :patch, local: true do |f| %>
+                    <%= f.select :production_status, @order_items.production_statuses_i18n.keys.map{|k| [I18n.t("enums.order_items.production_status.#{k}"), k]}, {}, class: 'form-control col-8' %>
+                    <%= f.submit '更新', class: "btn btn-sm btn-success m-2" %>
+                  <% end %>
+                </div>
+              </td>
             </tr>
-
+            <% end %>
           </tbody>
       </table>
     </div>
@@ -63,7 +70,7 @@
       <table class="text-right">
         <tr>
           <th><h4><strong>商品合計</strong></h4></th>
-          <td><h4><%= @order.billing_amount-@order.postages %></h4></td>
+          <td><h4><%= number_to_currency(@order.billing_amount-@order.postages) %></h4></td>
         </tr>
         <tr>
           <th><h4><strong>送料</strong></h4></th>
@@ -71,7 +78,7 @@
         </tr>
         <tr>
           <th><h4><strong>請求合計金額</strong></h4></th>
-          <td><h4><strong><%= @order.billing_amount %></strong></h4></td>
+          <td><h4><strong><%= number_to_currency(@order.billing_amount) %></strong></h4></td>
         </tr>
       </table>
     </div>
@@ -79,5 +86,5 @@
   </div>
   <div>
 
-      <% end %>
+
 </div>

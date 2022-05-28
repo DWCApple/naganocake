@@ -13,7 +13,9 @@ ja:
           in_production: 製作中
           preparing: 発送準備中
           sent: 製作完了
-  enum:
+
+
+  enums:
     order:
       method_of_payment:
         credit_card: クレジットカード
@@ -24,20 +26,7 @@ ja:
         payment_confirmation: 入金確認
         in_production: 製作中
         preparing: 発送準備中
-        sent: 製作完了
-
-    order_items:
-      production_status:
-        production_impossible: 着手不可
-        production_wait: 製作待ち
-        in_production: 製作中
-        production_completed: 製作完了
-
-  enums:
-    order:
-      method_of_payment:
-        credit_card: クレジットカード
-        transfer: 銀行振込
+        sent: 発送済み
 
     order_items:
       production_status:

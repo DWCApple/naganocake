@@ -6,7 +6,8 @@ Rails.application.routes.draw do
     resources :genres, only: [:index,:edit,:create,:update]
     resources :items, only: [:new,:index,:show,:edit,:update,:destroy]
     post "items/new" => "items#create"
-    resources :orders, only: [:show, :update]  
+    resources :orders, only: [:show, :update]
+    resources :order_items, only: [:update]
   end
 
   #URL /admin/sign_in ...
