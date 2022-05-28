@@ -7,10 +7,10 @@
 
       <h5>支払い方法</h5>
         <div style="margin-left:30px;">
-          <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
-          <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
-          <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
-          <%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%>
+          <%= f.radio_button :method_of_payment, Order.method_of_payments.key(0) %>
+          <%= f.label :method_of_payment, Order.method_of_payments_i18n[:credit_card] %>
+          <%= f.radio_button :method_of_payment, Order.method_of_payments.key(1) %>
+          <%= f.label :method_of_payment, Order.method_of_payments_i18n[:transfer]%>
         </div>
 
       <h5>お届け先</h5>

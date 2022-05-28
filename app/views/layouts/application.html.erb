@@ -25,23 +25,16 @@
 
          <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
+
           <% if end_user_signed_in? %>
             <li class="nav-item m-3">
           　  ようこそ、<%= current_end_user.family_name %>さん！
           　</li>
             <li class="nav-item m-3">
               <%= link_to "マイページ", end_users_path, class: 'nav-link text-dark btn btn-outline-secondary' %>
-            </li>
-            <li class="nav-item m-3">
-              <%= link_to "商品一覧", items_path, class: 'nav-link text-dark btn btn-outline-secondary' %>
-            </li>
-            <li class="nav-item m-3">
-              <%= link_to "カート", cart_items_path, class: 'nav-link text-dark btn btn-outline-secondary' %>
-            </li>
-            <li class="nav-item m-3">
-              <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete, class: 'nav-link text-dark btn btn-outline-secondary' %>
-            </li>
-          <% elsif admin_signed_in? %>
+
+
+          <% if admin_signed_in? %>
         <li class="nav-item m-3">
           <%= link_to '商品一覧', admin_items_path, class: 'nav-link text-dark btn btn-outline-secondary' %>
             </li>
@@ -57,7 +50,20 @@
             <li class="nav-item m-3">
               <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-dark btn btn-outline-secondary' %>
             </li>
-        <% else %>
+          <% elsif end_user_signed_in? %>
+            <li class="nav-item m-3">
+              <%= link_to "マイページ", end_users_path, class: 'nav-link text-dark btn btn-outline-secondary' %>
+            </li>
+            <li class="nav-item m-3">
+              <%= link_to "商品一覧", items_path, class: 'nav-link text-dark btn btn-outline-secondary' %>
+            </li>
+            <li class="nav-item m-3">
+              <%= link_to "カート", cart_items_path, class: 'nav-link text-dark btn btn-outline-secondary' %>
+            </li>
+            <li class="nav-item m-3">
+              <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete, class: 'nav-link text-dark btn btn-outline-secondary' %>
+            </li>
+          <% else %>
             <li class="nav-item m-3">
               <%= link_to "About", about_path, class: 'nav-link text-dark btn btn-outline-secondary' %>
             </li>
