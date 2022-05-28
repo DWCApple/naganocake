@@ -14,7 +14,6 @@ ja:
           preparing: 発送準備中
           sent: 製作完了
 
-
   enums:
     order:
       method_of_payment:
@@ -34,3 +33,4 @@ ja:
         production_wait: 製作待ち
         in_production: 製作中
         production_completed: 製作完了
+

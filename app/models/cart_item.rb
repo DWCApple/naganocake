@@ -1,5 +1,5 @@
 class CartItem < ApplicationRecord
-  validates :quantity, presence: true
+  validates :item_id, :quantity, presence: true
 
   belongs_to :item
   belongs_to :end_user

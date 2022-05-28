@@ -1,2 +1,98 @@
-<h1>Public::Orders#show</h1>
-<p>Find me in app/views/public/orders/show.html.erb</p>
+
+      <div class="row mt-5 mb-2 text-right">
+        <div class="col-4">
+          <h3 class="bg-light">
+            <strong>
+              注文履歴詳細
+            </strong>
+          </h3>
+        </div>
+      </div>
+
+  <div class="container">
+    <div class = "row">
+      <div class = "col-6">
+        <table class = "table" border border-dark = "1">
+
+            <strong>注文情報</strong>
+              <tr>
+                <th class = "border border-dark bg-light">注文日</th>
+                  <td class = "border border-dark"><%= @order.created_at.strftime("%Y/%m/%d") %></td>
+              </tr>
+
+              <tr>
+                <th class = "border border-dark bg-light">配送先</th>
+                  <td class = "border border-dark">
+                  〒<%= @order.postal_code %><br>
+                  <%= @order.address %>
+                  </td>
+              </tr>
+
+              <tr>
+                <th class = "border border-dark bg-light">支払方法</th>
+                  <td class = "border border-dark">
+                    <% payment_eg = Order.method_of_payments.key(@order.method_of_payment) %>
+                    <%= @order.method_of_payment_i18n %>
+                  </td>
+              </tr>
+
+
+              <tr>
+                <th class = "border border-dark bg-light">ステータス</th>
+                  <td class = "border border-dark"><%= @order.status_i18n %></td>
+              </tr>
+        </table>
+    </div>
+
+    <div class="col-4">
+      <table class="table" border border-dark = "1">
+        <strong>請求情報</strong>
+          <tr>
+            <th class = "border border-dark bg-light">商品合計</th>
+              <td class = "border border-dark">
+                <%= number_to_currency(@order.billing_amount-@order.postages) %>
+
+              </td>
+          </tr>
+
+          <tr>
+            <th class = "border border-dark bg-light">配送料</th>
+              <td class = "border border-dark"><%= @order.postages %></td>
+          </tr>
+
+          <tr>
+            <th class = "border border-dark bg-light">
+              <strong>ご請求金額</strong>
+            </th>
+              <td class = "border border-dark"><%= number_to_currency (@order.billing_amount) %></td>
+          </tr>
+        </table>
+     </div>
+    </div>
+
+
+
+    <strong>注文内容</strong>
+
+      <table class = "table mb-5" border="1">
+        <thead class="bg-light">
+
+          <tr>
+            <th class = "border border-dark">商品</th>
+            <th class = "border border-dark">単価(税込)</th>
+            <th class = "border border-dark">個数</th>
+            <th class = "border border-dark">小計</th>
+          </tr>
+        </thead>
+
+        <% @order_items.each do |order_item| %>
+          <tr>
+            <td class = "border border-dark"><%= order_item.item.name %><br></td>
+            <td class = "border border-dark"><%= order_item.price %><br></td>
+            <td class = "border border-dark"><%= order_item.quantity %><br></td>
+            <td class = "border border-dark"><%= order_item.price*order_item.quantity %><br></td>
+          </tr>
+        <% end %>
+      </table>
+  </div>
+
