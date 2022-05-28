@@ -13,18 +13,14 @@ ja:
           in_production: 製作中
           preparing: 発送準備中
           sent: 製作完了
+
   enum:
     order:
       method_of_payment:
         credit_card: クレジットカード
         transfer: 銀行振込
 
-      status:
-        backorder: 入金待ち
-        payment_confirmation: 入金確認
-        in_production: 製作中
-        preparing: 発送準備中
-        sent: 製作完了
+
 
     order_items:
       production_status:
@@ -38,6 +34,13 @@ ja:
       method_of_payment:
         credit_card: クレジットカード
         transfer: 銀行振込
+
+      status:
+        backorder: 入金待ち
+        payment_confirmation: 入金確認
+        in_production: 製作中
+        preparing: 発送準備中
+        sent: 製作完了
 
     order_items:
       production_status:
