@@ -6,9 +6,14 @@ class Admin::OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    if @order.update(order_params)
-      redirect_to admin_order_path(@order.id), notice: '更新に成功しました'
+    @order.update(order_params)
+    if @order.status == "payment_confirmation"
+      @order.order_items.each do |order_item|
+        order_item.production_status = "production_wait"
+        order_item.save
+      end
     end
+      redirect_to admin_order_path(@order.id), notice: '更新に成功しました'
   end
 
   private
