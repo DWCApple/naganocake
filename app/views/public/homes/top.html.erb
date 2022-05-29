@@ -21,13 +21,15 @@
       <% @items.each do |item| %>
       <div class="col-md-3"; style="margin: 10px;">
         <div>
+          <%= link_to item_path(item.id) do %>
           <%= image_tag item.image, size: "140x140" %>
+          <% end %>
         </div>
         <div>
           <%= link_to item.name, item_path(item.id) %>
         </div>
         <div>
-          <%= item.price %>円
+          ¥<%= item.price %>
         </div>
       </div>
       <% end %>

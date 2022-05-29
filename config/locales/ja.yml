@@ -6,9 +6,17 @@ ja:
         postal_code: 郵便番号
         address: 住所
 
+      order:
+        status:
+          backorder: 入金待ち
+          payment_confirmation: 入金確認
+          in_production: 製作中
+          preparing: 発送準備中
+          sent: 製作完了
+
   enums:
     order:
-      payment_method:
+      method_of_payment:
         credit_card: クレジットカード
         transfer: 銀行振込
 
@@ -17,11 +25,12 @@ ja:
         payment_confirmation: 入金確認
         in_production: 製作中
         preparing: 発送準備中
-        sent: 製作完了
+        sent: 発送済み
 
     order_items:
-      production_status_method:
+      production_status:
         production_impossible: 着手不可
         production_wait: 製作待ち
         in_production: 製作中
         production_completed: 製作完了
+

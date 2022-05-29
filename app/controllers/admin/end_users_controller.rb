@@ -1,4 +1,5 @@
 class Admin::EndUsersController < ApplicationController
+before_action :authenticate_admin!, except: [:top]
   def index
     @end_users = EndUser.page(params[:page]).per(1)
   end
@@ -19,9 +20,9 @@ class Admin::EndUsersController < ApplicationController
       render :edit
     end
   end
-  
+
   private
-  
+
   def end_user_params
     params.require(:end_user).permit(:email, :family_name, :family_name_kana, :first_name, :first_name_kana, :address, :telephone_number, :postal_code, :is_deleted, :payment_method)
   end

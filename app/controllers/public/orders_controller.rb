@@ -1,5 +1,6 @@
 class Public::OrdersController < ApplicationController
-  before_action :check, only:[:new,:confirm]
+
+  before_action :authenticate_end_user!, except: [:top,:about,:index]
 
   def new
     @order = Order.new
@@ -60,10 +61,12 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = Order.where(end_user_id: current_end_user.id)
+
   end
 
   def show
     @order = Order.find(params[:id])
+    @order_items = @order.order_items
   end
 
   private

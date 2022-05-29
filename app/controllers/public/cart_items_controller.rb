@@ -1,5 +1,8 @@
 class Public::CartItemsController < ApplicationController
- before_action:authenticate_end_user!
+
+  before_action :authenticate_end_user!, except: [:top,:about,:index]
+  # before_action:authenticate_end_user!
+
 
   def index
     @total_price = 0
