@@ -1,6 +1,7 @@
 class Public::OrdersController < ApplicationController
 
-  before_action :authenticate_end_user!, except: [:top,:about,:index]
+  before_action :authenticate_end_user!
+  before_action :check, only:[:new,:confirm]
 
   def new
     @order = Order.new
@@ -82,7 +83,7 @@ class Public::OrdersController < ApplicationController
   def check
     if current_end_user.cart_items.exists? == false
 
-      redirect_to cart_items_path
+       redirect_to cart_items_path
     end
   end
 
