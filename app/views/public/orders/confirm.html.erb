@@ -33,8 +33,8 @@
           </table>
           <div>
           <label class='font-weight-bold'>支払方法</label>
-            <% payment_eg = Order.method_of_payments.key(@order.method_of_payment) %>
-            <%= Order.method_of_payments_i18n[payment_eg] %>
+            <p class='text-center'>
+            <%= @order.method_of_payment_i18n %>
           </div>
           <div>
           <label class='font-weight-bold'>お届け先</label>
