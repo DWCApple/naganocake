@@ -19,13 +19,13 @@
                 <%= cart.item.name %>
               </td>
               <td>
-                <%= cart.item.add_tax_price %>
+                <%= number_to_currency(cart.item.add_tax_price) %>
               </td>
               <td>
                 <%= cart.quantity %>
               </td>
               <td>
-                <%= cart.subtotal %>
+                <%= number_to_currency(cart.subtotal) %>
               </td>
             </tr>
             <% end %>
@@ -49,15 +49,15 @@
             <tbody>
               <tr>
                 <td>送料</td>
-                <td><%= @order.postages %></td>
+                <td><%= number_to_currency(@order.postages) %></td>
               </tr>
               <tr>
                 <td>商品合計</td>
-                <td><%= @total_price %></td>
+                <td><%= number_to_currency(@total_price) %></td>
               </tr>
               <tr>
                 <td>請求金額</td>
-                <td><%= @billing_amount %></td>
+                <td><%= number_to_currency(@billing_amount) %></td>
               </tr>
             </tbody>
           </table>
