@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="mx-auto" style="width: 900px;">
+    <h1>商品一覧</h1>
+    <p>(全<%= @items.count %>件）</p>
+      <div class="row">
+      <% @items.each do |item| %>
+      <div class="col-md-3"; style="margin: 10px;">
+        <div>
+          <%= link_to item_path(item.id) do %>
+          <%= image_tag item.image, size: "150x150" %><br>
+          <% end %>
+        </div>
+        <div class="font-weight-bold" style="margin-top: 20px;">
+          <div>
+            <%= link_to item.name, item_path(item.id) %>
+          </div>
+          <div style="margin-top: 20px;">
+            ¥<%= item.price %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+      </div>
+  </div>
+</div>
+    <%= paginate @items %>

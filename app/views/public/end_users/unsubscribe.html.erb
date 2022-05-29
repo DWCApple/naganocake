@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="mx-auto text-center" style="margin-top: 50px; width: 500px;">
+    <h2>本当に退会しますか？</h2>
+  </div>
+  <div class="mx-auto" style="margin-top: 30px; width: 500px;">
+    <p class="text-center">
+      退会すると、会員登録情報や,<br>
+      これまでの購入履歴が閲覧できなくなります。<br>
+      退会する場合には、「退会する」をクリックしてください。
+    </p>
+  </div>
+  <div class="mx-auto text-center" style="margin-top: 50px; width: 500px;">
+    <%= link_to "退会しない", end_users_path(current_end_user), class: "btn btn-primary" %>
+    <%= link_to "退会する", withdrawal_path(current_end_user), method: :patch, class: "btn btn-danger" %>
+  </div>
+</div>

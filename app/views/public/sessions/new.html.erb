@@ -1,0 +1,74 @@
+<tbody>
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-2 bg-light">
+        <h2>ログイン</h2>
+      </div>
+    </div>
+
+    <div class="row text-center">
+      <div class="col-md-5 bg-light" style="margin-top:50px;">
+        <h3>会員の方はこちらからログイン</h3>
+      </div>
+    </div>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="container">
+      　<div class="row text-left">
+      　   <div class="col-md-3">
+      　     <h4>
+              <%= f.label :'メールアドレス'%>
+            </h4>
+          </div>
+          <div class="col-md-3" style="margin-top:20px;">
+            <h4>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            </h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+      　<div class="row text-left">
+      　   <div class="col-md-3">
+      　     <h4>
+              <%= f.label :'パスワード' %>
+            </h4>
+          </div>
+          <div class="col-md-3"style="margin-top:20px;">
+            <h4>
+              <%= f.password_field :password, autocomplete: "current-password" %>
+            </h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+      　<div class="row text-senter">
+          <div class="col-md-12" style="padding-bottom: 20px; padding-left: 309px;">
+            <h3>
+              <%= f.submit 'ログイン', class: "btn btn-sm btn-primary" %>
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+
+    <div class="row text-center">
+      <div class="col-md-4 bg-light"style="margin-left:170px;">
+        <div>
+          <h2>会員登録がお済みでない方</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row text-center">
+      <div class="col-md-5" style="margin-left: 150px;">
+        <h5>
+          <%= link_to "こちら", new_end_user_registration_path, class: "text-primary" %>
+          から新規登録を行なってください。
+        </h5>
+      </div>
+    </div>
+  </div>
+</tbody>
